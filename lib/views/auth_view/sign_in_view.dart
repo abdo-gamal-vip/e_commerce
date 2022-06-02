@@ -58,12 +58,68 @@ class SignInView extends GetWidget<AuthViewModel> {
                             TextStyle(fontSize: 16, color: Color(0xff929292))),
                     TextFormField(
                       decoration: InputDecoration(
-                          hintText: "Example@gmail.com",
-                          focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: primaryColor))),
-                    )
+                        hintText: "Example@gmail.com",
+                      ),
+                    ),
+                    SizedBox(
+                      height: Get.height * 20 / Get.height,
+                    ),
+                    Text("password",
+                        style:
+                            TextStyle(fontSize: 16, color: Color(0xff929292))),
+                    TextFormField(
+                      decoration: InputDecoration(
+                          hintText: ".........",
+                          hintStyle: TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.bold)),
+                    ),
+                    SizedBox(
+                      height: Get.height * 20 / Get.height,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [InkWell(child: Text("forget password ?"))],
+                    ),
+                    SizedBox(
+                      height: Get.height * 20 / Get.height,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: SizedBox(
+                          height: Get.height * 50 / Get.height,
+                          width: Get.width * 311 / Get.width,
+                          child: ElevatedButton(
+                              onPressed: () {},
+                              child: Text(
+                                "Sign In",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ))),
+                    ),
                   ]),
-            )
+            ),
+            Container(
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: Get.height * 15 / Get.height,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "-OR-",
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
