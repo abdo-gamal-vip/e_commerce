@@ -6,6 +6,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class SignInView extends GetWidget<AuthViewModel> {
@@ -16,18 +17,18 @@ class SignInView extends GetWidget<AuthViewModel> {
       body: SizedBox(
         height: double.infinity,
         width: double.infinity,
-        child: Column(
-          children: [
-            SizedBox(
-              height: Get.height * 95 / Get.height,
-            ),
-            Container(
-              margin: const EdgeInsets.all(10),
-              padding: const EdgeInsets.all(11),
-              decoration: BoxDecoration(
-                  color: backGroundColor,
-                  borderRadius: BorderRadius.circular(10)),
-              child: SingleChildScrollView(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: Get.height * 95 / Get.height,
+              ),
+              Container(
+                margin: const EdgeInsets.all(10),
+                padding: const EdgeInsets.all(11),
+                decoration: BoxDecoration(
+                    color: backGroundColor,
+                    borderRadius: BorderRadius.circular(10)),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -90,41 +91,76 @@ class SignInView extends GetWidget<AuthViewModel> {
                       SizedBox(
                         height: Get.height * 20 / Get.height,
                       ),
-                      DefultBigButton(
-                          txt: "signin",
-                          ontap: () {
-                            print("object");
-                          }),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          DefultBigButton(
+                              txt: "signin",
+                              ontap: () {
+                                print("object");
+                              }),
+                        ],
+                      )
                     ]),
               ),
-            ),
-            Container(
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: Get.height * 15 / Get.height,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text(
-                        "-OR-",
-                        style: TextStyle(
-                          fontSize: 18,
+              Container(
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: Get.height * 15 / Get.height,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Text(
+                          "-OR-",
+                          style: TextStyle(
+                            fontSize: 18,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: Get.height * 15 / Get.height,
-                  ),
-                  Container(
-                    height: Get.height * 50 / Get.height,
-                  )
-                ],
+                      ],
+                    ),
+                    SizedBox(
+                      height: Get.height * 15 / Get.height,
+                    ),
+                    Container(
+                        height: Get.height * 50 / Get.height,
+                        width: Get.width * 311 / Get.width,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            SvgPicture.asset(
+                              "assets/svg/facebook.svg",
+                            ),
+                            Text("Sign in with facebook"),
+                          ],
+                        )),
+                    SizedBox(
+                      height: Get.height * 11 / Get.height,
+                    ),
+                    Container(
+                        height: Get.height * 50 / Get.height,
+                        width: Get.width * 311 / Get.width,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            SvgPicture.asset(
+                              "assets/svg/google.svg",
+                            ),
+                            Text("Sign in with google"),
+                          ],
+                        )),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
