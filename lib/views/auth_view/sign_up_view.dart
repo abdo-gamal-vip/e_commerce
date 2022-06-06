@@ -13,6 +13,10 @@ class SignUpView extends GetWidget<AuthViewModel> {
   SignUpView({Key? key}) : super(key: key);
   GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   final controller = Get.put(AuthViewModel());
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,33 +44,37 @@ class SignUpView extends GetWidget<AuthViewModel> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: const [
                           Text(
-                            "welcome, ",
+                            "Sign Up, ",
                             style: TextStyle(fontSize: 30),
-                          ),
-                          Spacer(),
-                          InkWell(
-                            child: Text(
-                              "Sign up ok",
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  color: primaryColor,
-                                  fontWeight: FontWeight.bold),
-                            ),
                           ),
                         ],
                       ),
-                      const Text(
-                        "Sign up To Continue, ",
-                        style:
-                            TextStyle(fontSize: 14, color: Color(0xff929292)),
-                      ),
                       SizedBox(
                         height: Get.height * 40 / Get.height,
+                      ),
+                      const Text("name",
+                          style: TextStyle(
+                              fontSize: 16, color: Color(0xff929292))),
+                      TextFormField(
+                        controller: nameController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return "Please enter your name";
+                          }
+                          return null;
+                        },
+                        decoration: const InputDecoration(
+                          hintText: "Type Your Name",
+                        ),
+                      ),
+                      SizedBox(
+                        height: Get.height * 20 / Get.height,
                       ),
                       const Text("Email",
                           style: TextStyle(
                               fontSize: 16, color: Color(0xff929292))),
                       TextFormField(
+                        controller: emailController,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return "Please enter your email";
@@ -80,10 +88,11 @@ class SignUpView extends GetWidget<AuthViewModel> {
                       SizedBox(
                         height: Get.height * 20 / Get.height,
                       ),
-                      Text("password",
+                      Text("Password",
                           style: TextStyle(
                               fontSize: 16, color: Color(0xff929292))),
                       TextFormField(
+                        controller: passController,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return "Please enter your password";
@@ -99,24 +108,18 @@ class SignUpView extends GetWidget<AuthViewModel> {
                         height: Get.height * 20 / Get.height,
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: const [
-                          InkWell(child: Text("forget password ?"))
-                        ],
-                      ),
-                      SizedBox(
-                        height: Get.height * 20 / Get.height,
-                      ),
-                      Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          DefultBigButton(
+                          DefultBigButton2(
                               txt: "sign Up",
                               ontap: () {
-                                if (_formkey.currentState!.validate()) {}
+                                if (_formkey.currentState!.validate()) {
+                                  controller.signUp(emailController.text,
+                                      passController.text);
+                                }
                               }),
                         ],
-                      )
+                      ),
                     ]),
               ),
             ),
@@ -126,53 +129,6 @@ class SignUpView extends GetWidget<AuthViewModel> {
                   SizedBox(
                     height: Get.height * 15 / Get.height,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text(
-                        "-OR-",
-                        style: TextStyle(
-                          fontSize: 18,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: Get.height * 15 / Get.height,
-                  ),
-                  Container(
-                      height: Get.height * 50 / Get.height,
-                      width: Get.width * 310 / Get.width,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          SvgPicture.asset(
-                            "assets/svg/facebook.svg",
-                          ),
-                          Text("Sign in with facebook"),
-                        ],
-                      )),
-                  SizedBox(
-                    height: Get.height * 11 / Get.height,
-                  ),
-                  Container(
-                      height: Get.height * 50 / Get.height,
-                      width: Get.width * 311 / Get.width,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          SvgPicture.asset(
-                            "assets/svg/google.svg",
-                          ),
-                          Text("Sign in with google"),
-                        ],
-                      )),
                 ],
               ),
             ),
