@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:e_commerce/views/home__view/home_vIew.dart';
+import 'package:e_commerce/views/home/home_vIew.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
