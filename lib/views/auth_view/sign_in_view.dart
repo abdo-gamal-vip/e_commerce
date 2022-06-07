@@ -12,6 +12,8 @@ import 'package:get/get.dart';
 
 class SignInView extends GetWidget<AuthViewModel> {
   final controller = Get.put(AuthViewModel());
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passController = TextEditingController();
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -70,6 +72,7 @@ class SignInView extends GetWidget<AuthViewModel> {
                             style: TextStyle(
                                 fontSize: 16, color: Color(0xff929292))),
                         TextFormField(
+                          controller: emailController,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return "Please enter your email";
@@ -87,6 +90,7 @@ class SignInView extends GetWidget<AuthViewModel> {
                             style: TextStyle(
                                 fontSize: 16, color: Color(0xff929292))),
                         TextFormField(
+                          controller: passController,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return "Please enter your password";
@@ -115,8 +119,12 @@ class SignInView extends GetWidget<AuthViewModel> {
                           children: [
                             DefultBigButton(
                                 txt: "signin",
-                                ontap: () {
-                                  if (_formkey.currentState!.validate()) {}
+                                ontap: () async {
+                                  if (_formkey.currentState!.validate()) {
+                                    await controller.signIn(
+                                        emailController.text,
+                                        passController.text);
+                                  }
                                 }),
                           ],
                         )

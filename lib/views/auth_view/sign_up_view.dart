@@ -112,10 +112,17 @@ class SignUpView extends GetWidget<AuthViewModel> {
                         children: [
                           DefultBigButton2(
                               txt: "sign Up",
-                              ontap: () {
+                              ontap: () async {
                                 if (_formkey.currentState!.validate()) {
-                                  controller.signUp(emailController.text,
-                                      passController.text);
+                                  try {
+                                    final newuser = await controller.signUp(
+                                        emailController.text,
+                                        passController.text);
+                                  } catch (e) {
+                                    Get.snackbar(e.toString(), "error");
+
+                                    print(e);
+                                  }
                                 }
                               }),
                         ],
