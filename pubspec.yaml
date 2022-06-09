@@ -67,6 +67,12 @@ flutter:
   assets:
     - assets/svg/facebook.svg
     - assets/svg/google.svg
+    - assets/svg/account.svg
+    - assets/svg/cart.svg
+    - assets/svg/explorer.svg
+    - assets/Account1.png
+    - assets/Cart1.png
+    - assets/Explore1.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
