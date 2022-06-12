@@ -1,11 +1,13 @@
 import 'dart:math';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce/views/home/home_vIew.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 class AuthViewModel extends GetxController {
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  CollectionReference userref = FirebaseFirestore.instance.collection('users');
 
   Future<void> signUp(String email, String password) async {
     var result = await firebaseAuth.createUserWithEmailAndPassword(
@@ -24,8 +26,14 @@ class AuthViewModel extends GetxController {
           email: email, password: password);
       if (result != null) {
         Get.to(HomeView());
+        await userref.doc().set({
+          "email": email,
+          "password": password,
+          "uid": result.user!.uid,
+        });
         Get.snackbar("ok", "Sign in success",
             snackPosition: SnackPosition.BOTTOM);
+
         print(result.user!.uid);
       }
     } catch (e) {

@@ -1,16 +1,14 @@
+import 'package:e_commerce/models/best_selling_model.dart';
+import 'package:e_commerce/view_models/explore_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-class ExploreView extends StatefulWidget {
-  const ExploreView({Key? key}) : super(key: key);
-
-  @override
-  State<ExploreView> createState() => _ExploreViewState();
-}
-
-class _ExploreViewState extends State<ExploreView> {
+class ExploreView extends GetWidget<ExploreViewModel> {
+  ExploreView({Key? key}) : super(key: key);
+  final controller = Get.put(ExploreViewModel());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,41 +16,81 @@ class _ExploreViewState extends State<ExploreView> {
       child: SizedBox(
         height: double.infinity,
         width: double.infinity,
-        child: Column(
-          children: [
-            SizedBox(
-              height: Get.height * 0.03,
-            ),
-            Container(
-              padding: EdgeInsets.all(5),
-              alignment: Alignment.centerLeft,
-              child: Icon(Icons.search),
-              height: Get.height * 65 / Get.height,
-              width: double.infinity,
-              margin: EdgeInsets.symmetric(horizontal: Get.width * 0.05),
-              decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  borderRadius: BorderRadius.circular(50)),
-            ),
-            SizedBox(
-              height: Get.height * 0.04,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 11),
-              child: Row(
+        child: GetBuilder<ExploreViewModel>(
+          builder: (cont) => Column(
+            children: [
+              SizedBox(
+                height: Get.height * 0.03,
+              ),
+              Container(
+                padding: EdgeInsets.all(5),
+                alignment: Alignment.centerLeft,
+                child: Icon(Icons.search),
+                height: Get.height * 65 / Get.height,
+                width: double.infinity,
+                margin: EdgeInsets.symmetric(horizontal: Get.width * 0.05),
+                decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: BorderRadius.circular(50)),
+              ),
+              SizedBox(
+                height: Get.height * 0.03,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: const [
+                    Text(
+                      "Categories",
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(4),
+                child: SizedBox(
+                  height: 812 * 90 / Get.height,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: controller.catList.length,
+                    itemBuilder: (context, index) {
+                      return Column(
+                        children: [
+                          Container(
+                            height: 700 * 65 / Get.height,
+                            width: 700 * 55 / Get.width,
+                            decoration: BoxDecoration(
+                                color: Colors.white, shape: BoxShape.circle),
+                            child: Center(
+                              child: Image.network(cont.catList[index].img),
+                            ),
+                          ),
+                          SizedBox(
+                            height: Get.height * 0.01,
+                          ),
+                          Text(cont.catList[index].name),
+                        ],
+                      );
+                    },
+                  ),
+                ),
+              ),
+              Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
+                children: [
                   Text(
-                    "Categories",
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black),
+                    " BestSelling",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     ));

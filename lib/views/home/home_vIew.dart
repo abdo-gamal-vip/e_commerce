@@ -18,7 +18,7 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   int currentIndex = 0;
   List<Widget> bodyList = [
-    const ExploreView(),
+    ExploreView(),
     const CartView(),
     const AccountView(),
   ];

@@ -20,6 +20,6 @@ void main() async {
     debugShowCheckedModeBanner: false,
     title: "E-commerce",
     theme: getThemeData(),
-    home: HomeView(),
+    home: SignInView(),
   ));
 }
