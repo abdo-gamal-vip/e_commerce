@@ -24,9 +24,10 @@ class ExploreViewModel extends GetxController {
 
   Future<void> getBestList() async {
     await bestref.get().then((value) {
-      for (var i in value.docs) {
-        bestList.add(BestSellingModel.fromMap(i));
-        print(i["name"]);
+      for (var y in value.docs) {
+        bestList.add(BestSellingModel.fromMap(y));
+        print(y["name"]);
+        update();
       }
     });
   }

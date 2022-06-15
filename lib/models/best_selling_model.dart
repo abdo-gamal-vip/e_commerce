@@ -1,28 +1,40 @@
 import 'dart:convert';
 
 class BestSellingModel {
+  String brand;
+  String color;
+  String details;
   String img;
   String name;
-  String description;
+  String price;
   BestSellingModel({
+    this.brand = '',
+    this.color = '',
+    this.details = '',
     this.img = '',
     this.name = '',
-    this.description = '',
+    this.price = '',
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'brand': brand,
+      'color': color,
+      'details': details,
       'img': img,
       'name': name,
-      'description': description,
+      'price': price,
     };
   }
 
   factory BestSellingModel.fromMap(map) {
     return BestSellingModel(
+      brand: map['brand'],
+      color: map['color'],
+      details: map['details'],
       img: map['img'],
       name: map['name'],
-      description: map['description'],
+      price: map['price'],
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:e_commerce/helper/conests.dart';
 import 'package:e_commerce/models/best_selling_model.dart';
 import 'package:e_commerce/view_models/explore_view_model.dart';
 import 'package:flutter/material.dart';
@@ -12,87 +13,146 @@ class ExploreView extends GetWidget<ExploreViewModel> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         body: SafeArea(
-      child: SizedBox(
-        height: double.infinity,
-        width: double.infinity,
-        child: GetBuilder<ExploreViewModel>(
-          builder: (cont) => Column(
-            children: [
-              SizedBox(
-                height: Get.height * 0.03,
-              ),
-              Container(
-                padding: EdgeInsets.all(5),
-                alignment: Alignment.centerLeft,
-                child: Icon(Icons.search),
-                height: Get.height * 65 / Get.height,
-                width: double.infinity,
-                margin: EdgeInsets.symmetric(horizontal: Get.width * 0.05),
-                decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    borderRadius: BorderRadius.circular(50)),
-              ),
-              SizedBox(
-                height: Get.height * 0.03,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: const [
-                    Text(
-                      "Categories",
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(4),
-                child: SizedBox(
-                  height: 812 * 90 / Get.height,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: controller.catList.length,
-                    itemBuilder: (context, index) {
-                      return Column(
-                        children: [
-                          Container(
-                            height: 700 * 65 / Get.height,
-                            width: 700 * 55 / Get.width,
-                            decoration: BoxDecoration(
-                                color: Colors.white, shape: BoxShape.circle),
-                            child: Center(
-                              child: Image.network(cont.catList[index].img),
-                            ),
-                          ),
-                          SizedBox(
-                            height: Get.height * 0.01,
-                          ),
-                          Text(cont.catList[index].name),
-                        ],
-                      );
-                    },
-                  ),
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+          child: SizedBox(
+            height: double.infinity,
+            width: double.infinity,
+            child: GetBuilder<ExploreViewModel>(
+              builder: (cont) => Column(
                 children: [
-                  Text(
-                    " BestSelling",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  SizedBox(
+                    height: Get.height * 0.03,
                   ),
+                  Container(
+                    padding: EdgeInsets.all(5),
+                    alignment: Alignment.centerLeft,
+                    child: Icon(Icons.search),
+                    height: Get.height * 65 / Get.height,
+                    width: double.infinity,
+                    margin: EdgeInsets.symmetric(horizontal: Get.width * 0.05),
+                    decoration: BoxDecoration(
+                        color: Colors.grey[200],
+                        borderRadius: BorderRadius.circular(50)),
+                  ),
+                  SizedBox(
+                    height: Get.height * 0.03,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: const [
+                        Text(
+                          "Categories",
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4),
+                    child: SizedBox(
+                      height: 812 * 90 / Get.height,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: controller.catList.length,
+                        itemBuilder: (context, index) {
+                          return Column(
+                            children: [
+                              Container(
+                                height: 700 * 65 / Get.height,
+                                width: 700 * 55 / Get.width,
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    shape: BoxShape.circle),
+                                child: Center(
+                                  child: Image.network(cont.catList[index].img),
+                                ),
+                              ),
+                              SizedBox(
+                                height: Get.height * 0.01,
+                              ),
+                              Text(cont.catList[index].name),
+                            ],
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          " BestSelling",
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                        Spacer(),
+                        Text(
+                          "See All",
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: Get.height * 0.015,
+                  ),
+                  SizedBox(
+                    height: 812 * 320 / Get.height,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: controller.bestList.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Image.network(
+                                cont.bestList[index].img,
+                                height: Get.height * 240 / Get.height,
+                                width: Get.width * 164 / Get.width,
+                              ),
+                              Expanded(
+                                child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(cont.bestList[index].name),
+                                    Text(cont.bestList[index].brand,
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 12,
+                                        )),
+                                    Text(
+                                      cont.bestList[index].price,
+                                      style: TextStyle(
+                                        color: primaryColor,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                  )
                 ],
               ),
-            ],
+            ),
           ),
-        ),
-      ),
-    ));
+        ));
   }
 }

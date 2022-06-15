@@ -90,10 +90,14 @@ class SignInView extends GetWidget<AuthViewModel> {
                             style: TextStyle(
                                 fontSize: 16, color: Color(0xff929292))),
                         TextFormField(
+                          obscureText: true,
                           controller: passController,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return "Please enter your password";
+                            }
+                            if (value.length < 6 || value.length < 5) {
+                              return "Password Too Short";
                             }
                             return null;
                           },
