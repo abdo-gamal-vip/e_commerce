@@ -44,6 +44,9 @@ class AuthViewModel extends GetxController {
         Get.snackbar("error",
             "The password is invalid or the user does not have a password",
             snackPosition: SnackPosition.BOTTOM);
+      } else if (e.toString() ==
+          "[firebase_auth/network-request-failed] A network error (such as timeout, interrupted connection or unreachable host) has occurred") {
+        Get.snackbar("connection error", "Check your Connection");
       } else {
         Get.snackbar("error", "please try again ");
       }

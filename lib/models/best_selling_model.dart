@@ -2,14 +2,14 @@ import 'dart:convert';
 
 class BestSellingModel {
   String brand;
-  String color;
+  int color;
   String details;
   String img;
   String name;
   String price;
   BestSellingModel({
     this.brand = '',
-    this.color = '',
+    this.color = 0,
     this.details = '',
     this.img = '',
     this.name = '',

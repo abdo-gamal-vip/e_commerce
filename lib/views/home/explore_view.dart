@@ -1,6 +1,7 @@
 import 'package:e_commerce/helper/conests.dart';
 import 'package:e_commerce/models/best_selling_model.dart';
 import 'package:e_commerce/view_models/explore_view_model.dart';
+import 'package:e_commerce/views/home/prodact_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -28,7 +29,7 @@ class ExploreView extends GetWidget<ExploreViewModel> {
                     padding: EdgeInsets.all(5),
                     alignment: Alignment.centerLeft,
                     child: Icon(Icons.search),
-                    height: Get.height * 65 / Get.height,
+                    height: Get.height * 40 / Get.height,
                     width: double.infinity,
                     margin: EdgeInsets.symmetric(horizontal: Get.width * 0.05),
                     decoration: BoxDecoration(
@@ -113,37 +114,48 @@ class ExploreView extends GetWidget<ExploreViewModel> {
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.network(
-                                cont.bestList[index].img,
-                                height: Get.height * 240 / Get.height,
-                                width: Get.width * 164 / Get.width,
-                              ),
-                              Expanded(
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(cont.bestList[index].name),
-                                    Text(cont.bestList[index].brand,
-                                        style: TextStyle(
-                                          color: Colors.grey,
-                                          fontSize: 12,
-                                        )),
-                                    Text(
-                                      cont.bestList[index].price,
-                                      style: TextStyle(
-                                        color: primaryColor,
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                  ],
+                          child: InkWell(
+                            onTap: () {
+                              Get.to(ProductView(
+                                  name: cont.bestList[index].name,
+                                  color: cont.bestList[index].color,
+                                  img: cont.bestList[index].img,
+                                  details: cont.bestList[index].details,
+                                  price: cont.bestList[index].price));
+                            },
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Image.network(
+                                  cont.bestList[index].img,
+                                  height: Get.height * 240 / Get.height,
+                                  width: Get.width * 164 / Get.width,
                                 ),
-                              ),
-                            ],
+                                Expanded(
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(cont.bestList[index].name),
+                                      Text(cont.bestList[index].brand,
+                                          style: TextStyle(
+                                            color: Colors.grey,
+                                            fontSize: 12,
+                                          )),
+                                      Text(
+                                        cont.bestList[index].price,
+                                        style: TextStyle(
+                                          color: primaryColor,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         );
                       },
