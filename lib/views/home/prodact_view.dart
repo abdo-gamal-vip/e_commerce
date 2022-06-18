@@ -16,7 +16,7 @@ class ProductView extends StatelessWidget {
   String name;
   String price;
   String img;
-  int color;
+  String color;
   String details;
 
   @override
@@ -124,9 +124,12 @@ class ProductView extends StatelessWidget {
                           ),
                           const Spacer(),
                           Container(
+                            height: Get.height * 20 / Get.height,
+                            width: Get.height * 20 / Get.height,
                             decoration: BoxDecoration(
-                                shape: BoxShape.rectangle, color: Color(color)),
-                          )
+                                shape: BoxShape.circle,
+                                color: Color(int.parse("0xff${color}"))),
+                          ),
                         ]),
                       ),
                     ),
