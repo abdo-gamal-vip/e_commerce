@@ -168,46 +168,49 @@ class ProductView extends StatelessWidget {
                 SizedBox(
                   height: Get.height * 10 / Get.height,
                 ),
-                Column(
-                  children: [
-                    Container(
-                      width: double.infinity,
-                      height: Get.height * 80 / Get.height,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: const Color(0xffEBEBEB)),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 32, vertical: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Price",
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text(
-                                    "$price",
-                                    style: TextStyle(
-                                        fontSize: 18, color: primaryColor),
-                                  ),
-                                ]),
-                            defSmallButton(ontap: () {}, txt: "Add to cart"),
-                          ],
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        height: Get.height * 80 / Get.height,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: const Color(0xffEBEBEB)),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 32, vertical: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Price",
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text(
+                                      "$price",
+                                      style: TextStyle(
+                                          fontSize: 18, color: primaryColor),
+                                    ),
+                                  ]),
+                              defSmallButton(ontap: () {}, txt: "Add to cart"),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             )),

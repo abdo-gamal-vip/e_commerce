@@ -19,7 +19,7 @@ class _HomeViewState extends State<HomeView> {
   int currentIndex = 0;
   List<Widget> bodyList = [
     ExploreView(),
-    const CartView(),
+    CartView(),
     const AccountView(),
   ];
   @override
