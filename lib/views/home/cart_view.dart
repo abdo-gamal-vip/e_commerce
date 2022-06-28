@@ -29,7 +29,7 @@ class _CartViewState extends State<CartView> {
                     return Container(
                       height: 812 * 120 / Get.height,
                       color: Colors.grey[200],
-                      margin: EdgeInsets.all(10),
+                      margin: const EdgeInsets.all(10),
                       child: Row(children: [
                         Image.network(
                           "https://firebasestorage.googleapis.com/v0/b/ecommerce-tech-show.appspot.com/o/best%20selling%2Fsa3a.png?alt=media&token=b90bcf43-8c0e-46d8-95d2-3f6ac1016ab3",
@@ -43,16 +43,16 @@ class _CartViewState extends State<CartView> {
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
+                              const Text(
                                 "Tag Heuer Wristwatch ",
                                 style: TextStyle(fontSize: 15),
                               ),
-                              Text(
+                              const Text(
                                 "\$1500 ",
                                 style: TextStyle(
                                     fontSize: 15, color: primaryColor),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 5,
                               ),
                               Container(
@@ -61,14 +61,14 @@ class _CartViewState extends State<CartView> {
                                 child: Row(children: [
                                   IconButton(
                                       onPressed: () {},
-                                      icon: Icon(
+                                      icon: const Icon(
                                         Icons.add,
                                         size: 20,
                                       )),
-                                  Text("1"),
+                                  const Text("1"),
                                   IconButton(
                                       onPressed: () {},
-                                      icon: Icon(
+                                      icon: const Icon(
                                         Icons.remove,
                                         size: 20,
                                       )),
@@ -103,7 +103,7 @@ class _CartViewState extends State<CartView> {
                           Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
+                              children: const [
                                 Text(
                                   "Price",
                                   style: TextStyle(

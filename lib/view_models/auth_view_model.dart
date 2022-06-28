@@ -8,15 +8,27 @@ import 'package:get/get.dart';
 class AuthViewModel extends GetxController {
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   CollectionReference userref = FirebaseFirestore.instance.collection('users');
+  CollectionReference userrref = FirebaseFirestore.instance.collection('body');
 
   Future<void> signUp(String email, String password) async {
-    var result = await firebaseAuth.createUserWithEmailAndPassword(
-        email: email, password: password);
-    if (result != null) {
-      Get.back();
-      Get.snackbar("ok", "Sign up success",
-          snackPosition: SnackPosition.values[Random().nextInt(3)]);
-      print(result.user!.uid);
+    try {
+      var result = await firebaseAuth.createUserWithEmailAndPassword(
+          email: email, password: password);
+      if (result != null) {
+        Get.back();
+        await userrref.doc().set({
+          "email": email,
+          "password": password,
+          "uid": result.user!.uid,
+        });
+        Get.snackbar("ok", "Sign up success",
+            snackPosition: SnackPosition.values[Random().nextInt(3)]);
+        print(result.user!.uid);
+      }
+    } catch (e) {
+      if (e.toString() == null) {
+        Get.snackbar("error", "error msh ma3rof");
+      }
     }
   }
 

@@ -18,7 +18,7 @@ class defSmallButton extends StatelessWidget {
           style: ElevatedButton.styleFrom(),
           onPressed: () {},
           child: Text(
-            "Add",
+            txt,
             style: TextStyle(fontSize: 18, color: Colors.white),
           )),
     );
