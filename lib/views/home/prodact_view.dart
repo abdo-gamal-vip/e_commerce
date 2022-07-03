@@ -1,10 +1,14 @@
 import 'package:e_commerce/helper/conests.dart';
+import 'package:e_commerce/models/cart_product.dart';
+import 'package:e_commerce/views/home/prodact_view.dart';
+import 'package:e_commerce/view_models/cart_view_model.dart';
 import 'package:e_commerce/views/home/img_view.dart';
 import 'package:e_commerce/widgets/small_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
+import 'dart:convert';
 
 class ProductView extends StatelessWidget {
   ProductView(
@@ -204,7 +208,16 @@ class ProductView extends StatelessWidget {
                                           fontSize: 18, color: primaryColor),
                                     ),
                                   ]),
-                              defSmallButton(ontap: () {}, txt: "Add to cart"),
+                              defSmallButton(
+                                  ontap: () {
+                                    final cont = Get.put(CartViewModel());
+                                    cont.addToCart(CartProduct(
+                                        name: name,
+                                        image: img,
+                                        price: price.toInt(),
+                                        count: 1));
+                                  },
+                                  txt: "Add to cart"),
                             ],
                           ),
                         ),

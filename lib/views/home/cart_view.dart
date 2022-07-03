@@ -1,3 +1,4 @@
+import 'package:e_commerce/view_models/cart_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -6,129 +7,134 @@ import 'package:get/get.dart';
 import '../../helper/conests.dart';
 import '../../widgets/small_button.dart';
 
-class CartView extends StatefulWidget {
+class CartView extends GetWidget<CartViewModel> {
   CartView({Key? key}) : super(key: key);
-  @override
-  State<CartView> createState() => _CartViewState();
-}
-
-class _CartViewState extends State<CartView> {
+  final controller = Get.put(CartViewModel());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(children: [
-          Expanded(
-              flex: 7,
-              child: SizedBox(
-                height: double.infinity,
-                width: Get.width * 375 / Get.width,
-                child: ListView.builder(
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      height: 812 * 120 / Get.height,
-                      color: Colors.grey[200],
-                      margin: const EdgeInsets.all(10),
-                      child: Row(children: [
-                        Image.network(
-                          "https://firebasestorage.googleapis.com/v0/b/ecommerce-tech-show.appspot.com/o/best%20selling%2Fsa3a.png?alt=media&token=b90bcf43-8c0e-46d8-95d2-3f6ac1016ab3",
-                          height: 375 * 120 / Get.width,
-                          width: 375 * 120 / Get.width,
-                          fit: BoxFit.fill,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text(
-                                "Tag Heuer Wristwatch ",
-                                style: TextStyle(fontSize: 15),
-                              ),
-                              const Text(
-                                "\$1500 ",
-                                style: TextStyle(
-                                    fontSize: 15, color: primaryColor),
-                              ),
-                              const SizedBox(
-                                height: 5,
-                              ),
-                              Container(
-                                height: 812 * 35 / Get.height,
-                                color: Colors.grey[300],
-                                child: Row(children: [
-                                  IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(
-                                        Icons.add,
-                                        size: 20,
-                                      )),
-                                  const Text("1"),
-                                  IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(
-                                        Icons.remove,
-                                        size: 20,
-                                      )),
-                                ]),
-                              )
-                            ],
-                          ),
-                        )
-                      ]),
-                    );
-                  },
-                ),
-              )),
-          Container(
-            child: Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Container(
-                    width: double.infinity,
-                    height: Get.height * 80 / Get.height,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: const Color(0xffEBEBEB)),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 32, vertical: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
-                                Text(
-                                  "Price",
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold),
+        child: GetBuilder<CartViewModel>(
+            builder: (cont) => Column(children: [
+                  Expanded(
+                      flex: 7,
+                      child: SizedBox(
+                        height: double.infinity,
+                        width: Get.width * 375 / Get.width,
+                        child: ListView.builder(
+                          itemCount: cont.cartList.length,
+                          itemBuilder: (context, index) {
+                            return Container(
+                              height: 812 * 120 / Get.height,
+                              color: Colors.grey[200],
+                              margin: const EdgeInsets.all(10),
+                              child: Row(children: [
+                                Image.network(
+                                  cont.cartList[index].image,
+                                  height: 375 * 120 / Get.width,
+                                  width: 375 * 120 / Get.width,
+                                  fit: BoxFit.fill,
                                 ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Text(
-                                  "\$1500",
-                                  style: TextStyle(
-                                      fontSize: 18, color: primaryColor),
-                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(10),
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "  ${cont.cartList[index].name}",
+                                        style: TextStyle(fontSize: 15),
+                                      ),
+                                      Text(
+                                        "\$${cont.cartList[index].price} ",
+                                        style: TextStyle(
+                                            fontSize: 15, color: primaryColor),
+                                      ),
+                                      const SizedBox(
+                                        height: 5,
+                                      ),
+                                      Container(
+                                        height: 812 * 35 / Get.height,
+                                        color: Colors.grey[300],
+                                        child: Row(children: [
+                                          IconButton(
+                                              onPressed: () {},
+                                              icon: const Icon(
+                                                Icons.add,
+                                                size: 20,
+                                              )),
+                                          Text(cont.cartList[index].count
+                                              .toString()),
+                                          IconButton(
+                                              onPressed: () {},
+                                              icon: const Icon(
+                                                Icons.remove,
+                                                size: 20,
+                                              )),
+                                        ]),
+                                      )
+                                    ],
+                                  ),
+                                )
                               ]),
-                          defSmallButton(ontap: () {}, txt: "CheckOut"),
+                            );
+                          },
+                        ),
+                      )),
+                  Container(
+                    child: Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Container(
+                            width: double.infinity,
+                            height: Get.height * 80 / Get.height,
+                            decoration: BoxDecoration(
+                              border:
+                                  Border.all(color: const Color(0xffEBEBEB)),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 32, vertical: 10),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: const [
+                                        Text(
+                                          "Price",
+                                          style: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Text(
+                                          "\$1500",
+                                          style: TextStyle(
+                                              fontSize: 18,
+                                              color: primaryColor),
+                                        ),
+                                      ]),
+                                  defSmallButton(ontap: () {}, txt: "CheckOut"),
+                                ],
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-          )
-        ]),
+                  )
+                ])),
       ),
     );
   }
