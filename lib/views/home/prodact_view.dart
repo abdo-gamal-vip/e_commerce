@@ -213,8 +213,8 @@ class ProductView extends StatelessWidget {
                                     final cont = Get.put(CartViewModel());
                                     cont.addToCart(CartProduct(
                                         name: name,
-                                        image: img,
-                                        price: 1,
+                                        img: img,
+                                        price: int.parse(price),
                                         count: 1));
                                   },
                                   txt: "Add to cart"),

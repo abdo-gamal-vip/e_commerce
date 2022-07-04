@@ -5,11 +5,11 @@ class CartProduct {
   String name;
   int price;
   int count;
-  String image;
+  String img;
   CartProduct({
     this.id,
     required this.name,
-    required this.image,
+    required this.img,
     required this.price,
     required this.count,
   });
@@ -20,7 +20,7 @@ class CartProduct {
       'name': name,
       'price': price,
       'count': count,
-      'image': image
+      'image': img
     };
   }
 
@@ -30,6 +30,6 @@ class CartProduct {
         name: map['name'],
         price: map['price'],
         count: map['count'],
-        image: map['image']);
+        img: map['img']);
   }
 }

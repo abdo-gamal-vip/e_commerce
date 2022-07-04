@@ -30,7 +30,7 @@ class CartView extends GetWidget<CartViewModel> {
                               margin: const EdgeInsets.all(10),
                               child: Row(children: [
                                 Image.network(
-                                  cont.cartList[index].image,
+                                  cont.cartList[index].img,
                                   height: 375 * 120 / Get.width,
                                   width: 375 * 120 / Get.width,
                                   fit: BoxFit.fill,

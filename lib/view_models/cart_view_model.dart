@@ -10,6 +10,7 @@ class CartViewModel extends GetxController {
   void onInit() {
     dbHelper = DBHelper();
     dbHelper.createDatabase();
+    getAllToCard();
     super.onInit();
   }
 
