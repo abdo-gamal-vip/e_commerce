@@ -9,6 +9,7 @@ import '../../widgets/small_button.dart';
 
 class CartView extends GetWidget<CartViewModel> {
   CartView({Key? key}) : super(key: key);
+  @override
   final controller = Get.put(CartViewModel());
   @override
   Widget build(BuildContext context) {
