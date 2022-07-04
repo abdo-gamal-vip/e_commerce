@@ -10,20 +10,22 @@ class DBHelper {
   static Database? _db;
   createDatabase() async {
     if (_db != null) {
-      return;
+      return _db;
     }
     String path = join(await getDatabasesPath(), 'cart.db');
     _db = await openDatabase(path, version: 1, onCreate: (db, version) {
       db.execute(
-          'CREATE TABLE products (id INTEGER PRIMARY KEY AUTO_INCREMENT , name TEXT , img TEXT,price INTEGER,count INTEGER);');
+          'CREATE TABLE products (id integer primary key autoincrement, name TEXT ,img TEXT,price TEXT,count INTEGER);');
     });
+    print("database");
+
     return _db;
   }
 
-  Future<int> createProducts(CartProduct cartProduct) async {
+  Future<int> createPruduct(CartProduct cartPruduct) async {
     Database db = await createDatabase();
-    return db.insert('products', cartProduct.toMap()).then((value) {
-      print("the id inserted $value");
+    return db.insert('products', cartPruduct.toMap()).then((value) {
+      print("the id inserted>>>>>>>>>>>>>>>>>>>>>>>>>> $value");
       return value;
     });
   }

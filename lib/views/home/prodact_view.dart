@@ -210,11 +210,12 @@ class ProductView extends StatelessWidget {
                                   ]),
                               defSmallButton(
                                   ontap: () {
+                                    print("onnnnn tap");
                                     final cont = Get.put(CartViewModel());
                                     cont.addToCart(CartProduct(
                                         name: name,
                                         img: img,
-                                        price: int.parse(price),
+                                        price: price,
                                         count: 1));
                                   },
                                   txt: "Add to cart"),

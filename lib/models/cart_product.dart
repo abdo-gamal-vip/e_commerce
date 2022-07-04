@@ -3,21 +3,21 @@ import 'dart:convert';
 class CartProduct {
   int? id;
   String name;
-  int price;
+  String price;
   int count;
   String img;
   CartProduct({
     this.id,
-    required this.name,
-    required this.price,
-    required this.count,
-    required this.img,
+    this.name = '',
+    this.price = '',
+    this.count = 0,
+    this.img = '',
   });
 
   CartProduct copyWith({
     int? id,
     String? name,
-    int? price,
+    String? price,
     int? count,
     String? img,
   }) {
@@ -40,11 +40,11 @@ class CartProduct {
     };
   }
 
-  factory CartProduct.fromMap(Map<String, dynamic> map) {
+  factory CartProduct.fromMap(map) {
     return CartProduct(
       id: map['id'] != null ? map['id']?.toInt() : null,
       name: map['name'],
-      price: map['price']?.toInt(),
+      price: map['price'],
       count: map['count']?.toInt(),
       img: map['img'],
     );

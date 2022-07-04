@@ -15,6 +15,7 @@ class CartViewModel extends GetxController {
   }
 
   Future<void> addToCart(CartProduct cartProduct) async {
+    await dbHelper.createPruduct(cartProduct);
     getAllToCard();
   }
 
