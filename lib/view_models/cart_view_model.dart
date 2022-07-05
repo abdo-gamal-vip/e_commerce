@@ -7,6 +7,7 @@ class CartViewModel extends GetxController {
   List<CartProduct> cartList = [];
   late DBHelper dbHelper;
   int total = 0;
+
   @override
   void onInit() {
     dbHelper = DBHelper();
