@@ -6,6 +6,7 @@ import 'package:e_commerce/view_models/cart_view_model.dart';
 class CartViewModel extends GetxController {
   List<CartProduct> cartList = [];
   late DBHelper dbHelper;
+  int total = 0;
   @override
   void onInit() {
     dbHelper = DBHelper();
@@ -25,7 +26,28 @@ class CartViewModel extends GetxController {
       for (var i in value) {
         cartList.add(CartProduct.fromMap(i));
       }
+      calcTotal();
+      if (cartList.isEmpty) {
+        total = 0;
+      }
       update();
     });
+  }
+
+  Future<void> deleteFromCart(int id) async {
+    await dbHelper.delete(id);
+    getAllToCard();
+  }
+
+  int calcTotal() {
+    dbHelper.allProducts().then((value) {
+      total = 0;
+      for (var i in value) {
+        total = total +
+            (int.parse(i['price'].toString())) *
+                int.parse(i['count'].toString());
+      }
+    });
+    return total;
   }
 }

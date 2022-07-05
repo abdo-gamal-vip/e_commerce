@@ -10,6 +10,7 @@ import '../../widgets/small_button.dart';
 class CartView extends GetWidget<CartViewModel> {
   CartView({Key? key}) : super(key: key);
   @override
+  var r = 4;
   final controller = Get.put(CartViewModel());
   @override
   Widget build(BuildContext context) {
@@ -25,61 +26,67 @@ class CartView extends GetWidget<CartViewModel> {
                         child: ListView.builder(
                           itemCount: cont.cartList.length,
                           itemBuilder: (context, index) {
-                            return Container(
-                              height: 812 * 120 / Get.height,
-                              color: Colors.grey[200],
-                              margin: const EdgeInsets.all(10),
-                              child: Row(children: [
-                                Image.network(
-                                  cont.cartList[index].img,
-                                  height: 375 * 120 / Get.width,
-                                  width: 375 * 120 / Get.width,
-                                  fit: BoxFit.fill,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(10),
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "  ${cont.cartList[index].name}",
-                                        style: TextStyle(fontSize: 15),
-                                      ),
-                                      Text(
-                                        "\$${cont.cartList[index].price} ",
-                                        style: TextStyle(
-                                            fontSize: 15, color: primaryColor),
-                                      ),
-                                      const SizedBox(
-                                        height: 5,
-                                      ),
-                                      Container(
-                                        height: 812 * 35 / Get.height,
-                                        color: Colors.grey[300],
-                                        child: Row(children: [
-                                          IconButton(
-                                              onPressed: () {},
-                                              icon: const Icon(
-                                                Icons.add,
-                                                size: 20,
-                                              )),
-                                          Text(cont.cartList[index].count
-                                              .toString()),
-                                          IconButton(
-                                              onPressed: () {},
-                                              icon: const Icon(
-                                                Icons.remove,
-                                                size: 20,
-                                              )),
-                                        ]),
-                                      )
-                                    ],
+                            return InkWell(
+                              onLongPress: (() {
+                                cont.deleteFromCart(cont.cartList[index].id!);
+                              }),
+                              child: Container(
+                                height: 812 * 120 / Get.height,
+                                color: Colors.grey[200],
+                                margin: const EdgeInsets.all(10),
+                                child: Row(children: [
+                                  Image.network(
+                                    cont.cartList[index].img,
+                                    height: 375 * 120 / Get.width,
+                                    width: 375 * 120 / Get.width,
+                                    fit: BoxFit.fill,
                                   ),
-                                )
-                              ]),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "  ${cont.cartList[index].name}",
+                                          style: TextStyle(fontSize: 15),
+                                        ),
+                                        Text(
+                                          "\$${cont.cartList[index].price} ",
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              color: primaryColor),
+                                        ),
+                                        const SizedBox(
+                                          height: 5,
+                                        ),
+                                        Container(
+                                          height: 812 * 35 / Get.height,
+                                          color: Colors.grey[300],
+                                          child: Row(children: [
+                                            IconButton(
+                                                onPressed: () {},
+                                                icon: const Icon(
+                                                  Icons.add,
+                                                  size: 20,
+                                                )),
+                                            Text(cont.cartList[index].count
+                                                .toString()),
+                                            IconButton(
+                                                onPressed: () {},
+                                                icon: const Icon(
+                                                  Icons.remove,
+                                                  size: 20,
+                                                )),
+                                          ]),
+                                        )
+                                      ],
+                                    ),
+                                  )
+                                ]),
+                              ),
                             );
                           },
                         ),
@@ -109,7 +116,7 @@ class CartView extends GetWidget<CartViewModel> {
                                           MainAxisAlignment.start,
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
-                                      children: const [
+                                      children: [
                                         Text(
                                           "Price",
                                           style: TextStyle(
@@ -120,7 +127,7 @@ class CartView extends GetWidget<CartViewModel> {
                                           height: 5,
                                         ),
                                         Text(
-                                          "\$1500",
+                                          "\$${cont.total}",
                                           style: TextStyle(
                                               fontSize: 18,
                                               color: primaryColor),
