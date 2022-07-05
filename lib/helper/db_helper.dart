@@ -39,4 +39,10 @@ class DBHelper {
     Database db = await createDatabase();
     return db.delete('products', where: 'id = ?', whereArgs: [id]);
   }
+
+  Future<int> updateId(CartProduct cartProduct) async {
+    Database db = await createDatabase();
+    return db.update('products', cartProduct.toMap(),
+        where: 'id=?', whereArgs: [cartProduct.id]);
+  }
 }

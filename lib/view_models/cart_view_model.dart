@@ -50,4 +50,22 @@ class CartViewModel extends GetxController {
     });
     return total;
   }
+
+  void increaseCount(int index) {
+    cartList[index].count++;
+    dbHelper.updateId(cartList[index]).then((value) {
+      calcTotal();
+      update();
+    });
+  }
+
+  void decreasecount(int index) {
+    if (cartList[index].count != 1) {
+      cartList[index].count--;
+      dbHelper.updateId(cartList[index]).then((value) {
+        calcTotal();
+        update();
+      });
+    }
+  }
 }

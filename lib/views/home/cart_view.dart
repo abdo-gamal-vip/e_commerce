@@ -67,7 +67,9 @@ class CartView extends GetWidget<CartViewModel> {
                                           color: Colors.grey[300],
                                           child: Row(children: [
                                             IconButton(
-                                                onPressed: () {},
+                                                onPressed: () {
+                                                  cont.increaseCount(index);
+                                                },
                                                 icon: const Icon(
                                                   Icons.add,
                                                   size: 20,
@@ -75,7 +77,9 @@ class CartView extends GetWidget<CartViewModel> {
                                             Text(cont.cartList[index].count
                                                 .toString()),
                                             IconButton(
-                                                onPressed: () {},
+                                                onPressed: () {
+                                                  cont.decreasecount(index);
+                                                },
                                                 icon: const Icon(
                                                   Icons.remove,
                                                   size: 20,
