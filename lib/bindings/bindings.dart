@@ -1,4 +1,5 @@
 import 'package:e_commerce/models/best_selling_model.dart';
+import 'package:e_commerce/view_models/account_view_model.dart';
 import 'package:e_commerce/view_models/auth_view_model.dart';
 import 'package:e_commerce/view_models/cart_view_model.dart';
 import 'package:e_commerce/view_models/explore_view_model.dart';
@@ -12,5 +13,6 @@ class Binding extends Bindings {
     Get.lazyPut(() => ExploreViewModel());
     Get.lazyPut(() => BestSellingModel());
     Get.lazyPut(() => CartViewModel());
+    Get.lazyPut(() => AccountViweModel());
   }
 }
