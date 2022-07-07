@@ -10,7 +10,7 @@ class AuthViewModel extends GetxController {
   CollectionReference userref = FirebaseFirestore.instance.collection('users');
   CollectionReference userrref = FirebaseFirestore.instance.collection('body');
 
-  Future<void> signUp(String email, String password) async {
+  Future<void> signUp(String email, String password, String name) async {
     try {
       var result = await firebaseAuth.createUserWithEmailAndPassword(
           email: email, password: password);
@@ -19,6 +19,7 @@ class AuthViewModel extends GetxController {
         await userrref.doc().set({
           "email": email,
           "password": password,
+          'name': name,
           "uid": result.user!.uid,
         });
         Get.snackbar("ok", "Sign up success",

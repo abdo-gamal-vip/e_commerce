@@ -117,7 +117,8 @@ class SignUpView extends GetWidget<AuthViewModel> {
                                   try {
                                     final newuser = await controller.signUp(
                                         emailController.text,
-                                        passController.text);
+                                        passController.text,
+                                        nameController.text);
                                   } catch (e) {
                                     Get.snackbar(e.toString(), "error");
 
