@@ -35,7 +35,7 @@ class AccountView extends GetWidget<AccountViweModel> {
                       ),
                     ),
                     Container(
-                      width: 812 * 250 / Get.height,
+                      width: 812 * 200 / Get.height,
                       height: 812 * 50 / Get.height,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,

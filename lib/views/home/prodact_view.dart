@@ -216,7 +216,7 @@ class ProductView extends StatelessWidget {
                                         name: name,
                                         img: img,
                                         price: price,
-                                        count: 1));
+                                        count: 2));
                                   },
                                   txt: "Add to cart"),
                             ],

@@ -102,7 +102,7 @@ class CartView extends GetWidget<CartViewModel> {
                         children: [
                           Container(
                             width: double.infinity,
-                            height: Get.height * 80 / Get.height,
+                            height: Get.height * 70 / Get.height,
                             decoration: BoxDecoration(
                               border:
                                   Border.all(color: const Color(0xffEBEBEB)),
