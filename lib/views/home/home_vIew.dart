@@ -20,7 +20,7 @@ class _HomeViewState extends State<HomeView> {
   List<Widget> bodyList = [
     ExploreView(),
     CartView(),
-    const AccountView(),
+    AccountView(),
   ];
   @override
   Widget build(BuildContext context) {

@@ -23,6 +23,6 @@ void main() async {
     debugShowCheckedModeBanner: false,
     title: "E-commerce",
     theme: getThemeData(),
-    home: user == null ? SignInView() : HomeView(),
+    home: user != null ? const HomeView() : SignInView(),
   ));
 }

@@ -6,7 +6,9 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 
 class AccountView extends GetWidget<AccountViweModel> {
-  const AccountView({Key? key}) : super(key: key);
+  AccountView({Key? key}) : super(key: key);
+
+  final controller = Get.put(AccountViweModel());
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +20,9 @@ class AccountView extends GetWidget<AccountViweModel> {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: EdgeInsets.all(0.8),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Container(
                       height: 812 * 120 / Get.height,
@@ -39,14 +41,18 @@ class AccountView extends GetWidget<AccountViweModel> {
                       height: 812 * 50 / Get.height,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            "Abdo Gamal",
+                            controller.name.toString() == null
+                                ? 'loading name'
+                                : controller.name.toString(),
                             style: TextStyle(
                                 fontSize: 26, fontWeight: FontWeight.w500),
                           ),
-                          Text("abdo.gamal.vip@gmail.com"),
+                          Text(controller.email.toString() == null
+                              ? 'loading email'
+                              : controller.email.toString()),
                         ],
                       ),
                     ),
