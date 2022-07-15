@@ -3,6 +3,7 @@ import 'package:e_commerce/view_models/account_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class AccountView extends GetWidget<AccountViweModel> {
@@ -58,7 +59,16 @@ class AccountView extends GetWidget<AccountViweModel> {
                     ),
                   ],
                 ),
-              )
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Column(children: [
+                ListTile(
+                  leading: Image.asset("assets/svg/editprofile.png"),
+                  title: Text("data"),
+                )
+              ]),
             ],
           ),
         ),
