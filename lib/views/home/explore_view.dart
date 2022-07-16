@@ -107,7 +107,7 @@ class ExploreView extends GetWidget<ExploreViewModel> {
                     height: Get.height * 0.001,
                   ),
                   SizedBox(
-                    height: 812 * 290 / Get.height,
+                    height: 812 * 300 / Get.height,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemCount: controller.bestList.length,
@@ -128,7 +128,7 @@ class ExploreView extends GetWidget<ExploreViewModel> {
                               children: [
                                 Image.network(
                                   cont.bestList[index].img,
-                                  height: Get.height * 240 / Get.height,
+                                  height: Get.height * 230 / Get.height,
                                   width: Get.width * 164 / Get.width,
                                 ),
                                 Column(
