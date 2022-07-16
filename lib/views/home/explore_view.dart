@@ -57,7 +57,7 @@ class ExploreView extends GetWidget<ExploreViewModel> {
                   Padding(
                     padding: const EdgeInsets.all(4),
                     child: SizedBox(
-                      height: 812 * 90 / Get.height,
+                      height: 812 * 80 / Get.height,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: controller.catList.length,
@@ -85,7 +85,7 @@ class ExploreView extends GetWidget<ExploreViewModel> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(5.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -104,10 +104,10 @@ class ExploreView extends GetWidget<ExploreViewModel> {
                     ),
                   ),
                   SizedBox(
-                    height: Get.height * 0.015,
+                    height: Get.height * 0.001,
                   ),
                   SizedBox(
-                    height: 812 * 320 / Get.height,
+                    height: 812 * 300 / Get.height,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemCount: controller.bestList.length,
@@ -131,28 +131,25 @@ class ExploreView extends GetWidget<ExploreViewModel> {
                                   height: Get.height * 240 / Get.height,
                                   width: Get.width * 164 / Get.width,
                                 ),
-                                Expanded(
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(cont.bestList[index].name),
-                                      Text(cont.bestList[index].brand,
-                                          style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: 12,
-                                          )),
-                                      Text(
-                                        cont.bestList[index].price,
+                                Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(cont.bestList[index].name),
+                                    Text(cont.bestList[index].brand,
                                         style: TextStyle(
-                                          color: primaryColor,
-                                          fontSize: 16,
-                                        ),
+                                          color: Colors.grey,
+                                          fontSize: 12,
+                                        )),
+                                    Text(
+                                      cont.bestList[index].price,
+                                      style: TextStyle(
+                                        color: primaryColor,
+                                        fontSize: 16,
                                       ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
