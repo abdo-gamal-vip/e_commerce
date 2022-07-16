@@ -107,7 +107,7 @@ class ExploreView extends GetWidget<ExploreViewModel> {
                     height: Get.height * 0.001,
                   ),
                   SizedBox(
-                    height: 812 * 300 / Get.height,
+                    height: 812 * 290 / Get.height,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemCount: controller.bestList.length,

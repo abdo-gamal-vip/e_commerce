@@ -1,4 +1,5 @@
 import 'package:e_commerce/view_models/cart_view_model.dart';
+import 'package:e_commerce/views/home/checkout_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -137,7 +138,11 @@ class CartView extends GetWidget<CartViewModel> {
                                               color: primaryColor),
                                         ),
                                       ]),
-                                  defSmallButton(ontap: () {}, txt: "CheckOut"),
+                                  defSmallButton(
+                                      ontap: () {
+                                        Get.to(Checkform());
+                                      },
+                                      txt: "CheckOut"),
                                 ],
                               ),
                             ),

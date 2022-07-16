@@ -1,5 +1,6 @@
 import 'package:e_commerce/helper/conests.dart';
 import 'package:e_commerce/view_models/account_view_model.dart';
+import 'package:e_commerce/views/home/home_vIew.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -65,9 +66,44 @@ class AccountView extends GetWidget<AccountViweModel> {
               ),
               Column(children: [
                 ListTile(
+                  onTap: () {
+                    Get.to(HomeView());
+                  },
                   leading: Image.asset("assets/svg/editprofile.png"),
-                  title: Text("data"),
-                )
+                  title: Text("Edit Profile"),
+                  trailing: RotatedBox(
+                    quarterTurns: 2,
+                    child: Icon(
+                      Icons.arrow_back_ios_new_outlined,
+                    ),
+                  ),
+                ),
+                ListTile(
+                  onTap: () {
+                    Get.to(HomeView());
+                  },
+                  leading: Image.asset("assets/svg/editprofile.png"),
+                  title: Text("Tracking Order"),
+                  trailing: RotatedBox(
+                    quarterTurns: 2,
+                    child: Icon(
+                      Icons.arrow_back_ios_new_outlined,
+                    ),
+                  ),
+                ),
+                ListTile(
+                  onTap: () {
+                    Get.to(HomeView());
+                  },
+                  leading: Image.asset("assets/svg/editprofile.png"),
+                  title: Text("Notifications"),
+                  trailing: RotatedBox(
+                    quarterTurns: 2,
+                    child: Icon(
+                      Icons.arrow_back_ios_new_outlined,
+                    ),
+                  ),
+                ),
               ]),
             ],
           ),
