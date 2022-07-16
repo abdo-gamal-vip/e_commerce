@@ -78,6 +78,7 @@ flutter:
     - assets/svg/notfi.svg
     - assets/svg/address.svg
     - assets/svg/editprofile.png
+    - assets/checkbox.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

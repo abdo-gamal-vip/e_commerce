@@ -27,7 +27,44 @@ class Checkform extends StatelessWidget {
               color: Colors.black,
             ),
           )),
-      body: Column(children: []),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          SizedBox(
+            height: 20,
+          ),
+          Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+            Image.asset("assets/checkbox.png"),
+            Text(
+              "Billing address is the same as delivery address",
+              style: TextStyle(fontSize: 14),
+            )
+          ]),
+          SizedBox(
+            height: 20,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "street 1 ",
+                style: TextStyle(color: Colors.grey),
+              ),
+              TextFormField(
+                decoration: InputDecoration(
+                  hintText: "21, Alex Davidson Avenue",
+                  hintStyle: TextStyle(color: Colors.black),
+                  focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black)),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ]),
+      ),
     ));
   }
 }
