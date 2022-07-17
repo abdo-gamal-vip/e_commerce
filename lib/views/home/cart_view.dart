@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 
 import '../../helper/conests.dart';
 import '../../widgets/small_button.dart';
+import 'checkout_view.dart';
 
 class CartView extends GetWidget<CartViewModel> {
   CartView({Key? key}) : super(key: key);
@@ -140,7 +141,7 @@ class CartView extends GetWidget<CartViewModel> {
                                       ]),
                                   defSmallButton(
                                       ontap: () {
-                                        Get.to(Checkform());
+                                        Get.to(checkout());
                                       },
                                       txt: "CheckOut"),
                                 ],

@@ -5,7 +5,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 
 class Checkform extends StatelessWidget {
-  const Checkform({Key? key}) : super(key: key);
+  Checkform({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class Checkform extends StatelessWidget {
       appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          title: Text(
+          title: const Text(
             "Checkout",
             style: TextStyle(fontSize: 18, color: Colors.black),
           ),
@@ -23,7 +23,7 @@ class Checkform extends StatelessWidget {
             onPressed: () {
               Get.back();
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back,
               color: Colors.black,
             ),
@@ -31,115 +31,124 @@ class Checkform extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(
-          child: Expanded(
-            flex: 5,
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              SizedBox(
-                height: 20,
-              ),
-              Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-                Image.asset("assets/checkbox.png"),
-                Text(
-                  "Billing address is the same as delivery address",
-                  style: TextStyle(fontSize: 14),
-                )
-              ]),
-              SizedBox(
-                height: 20,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "street 1 ",
-                    style: TextStyle(color: Colors.grey),
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            const SizedBox(
+              height: 20,
+            ),
+            Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+              Image.asset("assets/checkbox.png"),
+              const Text(
+                "Billing address is the same as delivery address",
+                style: TextStyle(fontSize: 14),
+              )
+            ]),
+            const SizedBox(
+              height: 20,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  "street 1 ",
+                  style: TextStyle(color: Colors.grey),
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    hintText: "21, Alex Davidson Avenue",
+                    hintStyle: TextStyle(color: Colors.black),
+                    focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black)),
                   ),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      hintText: "21, Alex Davidson Avenue",
-                      hintStyle: TextStyle(color: Colors.black),
-                      focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black)),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                const Text(
+                  "street 2 ",
+                  style: TextStyle(color: Colors.grey),
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    hintText: "Opposite Omegatron, Vicent Quarters",
+                    hintStyle: TextStyle(color: Colors.black),
+                    focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black)),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                const Text(
+                  "City ",
+                  style: TextStyle(color: Colors.grey),
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    hintText: "Cairo .. alex .. elmanya",
+                    hintStyle: TextStyle(color: Colors.black),
+                    focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black)),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: const [
+                    Text(
+                      "State ",
+                      style: TextStyle(color: Colors.grey),
                     ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    "street 2 ",
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      hintText: "Opposite Omegatron, Vicent Quarters",
-                      hintStyle: TextStyle(color: Colors.black),
-                      focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black)),
+                    Text(
+                      "Countery ",
+                      style: TextStyle(color: Colors.grey),
                     ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    "City ",
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      hintText: "Cairo .. alex .. elmanya",
-                      hintStyle: TextStyle(color: Colors.black),
-                      focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black)),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Row(
+                  ],
+                ),
+                Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Text(
-                        "State ",
-                        style: TextStyle(color: Colors.grey),
-                      ),
-                      Text(
-                        "Countery ",
-                        style: TextStyle(color: Colors.grey),
-                      ),
-                    ],
-                  ),
-                  Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Container(
-                          width: 100,
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                              hintText: "Lagos State",
-                              hintStyle: TextStyle(color: Colors.black),
-                              focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.black)),
-                            ),
+                      Container(
+                        width: 100,
+                        child: TextFormField(
+                          decoration: const InputDecoration(
+                            hintText: "Lagos State",
+                            hintStyle: TextStyle(color: Colors.black),
+                            focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.black)),
                           ),
                         ),
-                        Container(
-                          width: 100,
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                              hintText: "Nigeria",
-                              hintStyle: TextStyle(color: Colors.black),
-                              focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.black)),
-                            ),
+                      ),
+                      Container(
+                        width: 100,
+                        child: TextFormField(
+                          decoration: const InputDecoration(
+                            hintText: "Nigeria",
+                            hintStyle: TextStyle(color: Colors.black),
+                            focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.black)),
                           ),
                         ),
-                      ]),
-                  Row(children: [defSmallButton(txt: "Back", ontap: () {})]),
-                ],
-              ),
-            ]),
-          ),
+                      ),
+                    ]),
+                const SizedBox(
+                  height: 150,
+                ),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      defSmallButton(
+                          txt: "Back",
+                          ontap: () {
+                            Get.back();
+                          }),
+                      defSmallButton(txt: "Next", ontap: () {})
+                    ]),
+              ],
+            ),
+          ]),
         ),
       ),
     ));
