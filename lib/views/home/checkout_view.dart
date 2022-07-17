@@ -10,12 +10,11 @@ import 'package:get/get.dart';
 class checkout extends GetWidget<CartViewModel> {
   checkout({Key? key}) : super(key: key);
   final controller = Get.put(CartViewModel());
-  PageController pageController = PageController();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      body: PageView(controller: pageController, children: [
+      body: PageView(controller: controller.pageController, children: [
         Checkform(),
         AccountView(),
       ]),
