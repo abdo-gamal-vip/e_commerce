@@ -1,10 +1,13 @@
 import 'package:e_commerce/helper/db_helper.dart';
 import 'package:e_commerce/models/cart_product.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:e_commerce/view_models/cart_view_model.dart';
 
 class CartViewModel extends GetxController {
   List<CartProduct> cartList = [];
+  PageController pageController = PageController();
+
   late DBHelper dbHelper;
   int total = 0;
 
