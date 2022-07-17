@@ -15,7 +15,7 @@ class checkout extends GetWidget<CartViewModel> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      body: PageView(controller: pageController, children: [
+      body: PageView(controller: controller.pageController, children: [
         Checkform(),
         AccountView(),
       ]),
