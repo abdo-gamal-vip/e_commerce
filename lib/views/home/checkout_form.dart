@@ -6,10 +6,23 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 
 class Checkform extends GetWidget<CartViewModel> {
-  Checkform({Key? key}) : super(key: key);
+  Checkform({Key? key}) {
+    super.key;
+    controller.Street1 = street1controller.text;
+    controller.Street2 = street2controller.text;
+    controller.City = citycontroller.text;
+    controller.State = statecontroller.text;
+    controller.Zip = zipcontroller.text;
+    controller.Country = countrycontroller.text;
+  }
   @override
   final controller = Get.put(CartViewModel());
-
+  TextEditingController street1controller = TextEditingController();
+  TextEditingController street2controller = TextEditingController();
+  TextEditingController citycontroller = TextEditingController();
+  TextEditingController statecontroller = TextEditingController();
+  TextEditingController zipcontroller = TextEditingController();
+  TextEditingController countrycontroller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -57,6 +70,10 @@ class Checkform extends GetWidget<CartViewModel> {
                   style: TextStyle(color: Colors.grey),
                 ),
                 TextFormField(
+                  controller: street1controller,
+                  onChanged: (Value) {
+                    controller.Street1 = Value;
+                  },
                   decoration: const InputDecoration(
                     hintText: "21, Alex Davidson Avenue",
                     hintStyle: TextStyle(color: Colors.black),
@@ -72,6 +89,10 @@ class Checkform extends GetWidget<CartViewModel> {
                   style: TextStyle(color: Colors.grey),
                 ),
                 TextFormField(
+                  controller: street2controller,
+                  onChanged: (Value) {
+                    controller.Street2 = Value;
+                  },
                   decoration: const InputDecoration(
                     hintText: "Opposite Omegatron, Vicent Quarters",
                     hintStyle: TextStyle(color: Colors.black),
@@ -87,6 +108,10 @@ class Checkform extends GetWidget<CartViewModel> {
                   style: TextStyle(color: Colors.grey),
                 ),
                 TextFormField(
+                  controller: citycontroller,
+                  onChanged: (Value) {
+                    controller.City = Value;
+                  },
                   decoration: const InputDecoration(
                     hintText: "Cairo .. alex .. elmanya",
                     hintStyle: TextStyle(color: Colors.black),
@@ -116,6 +141,10 @@ class Checkform extends GetWidget<CartViewModel> {
                       Container(
                         width: 100,
                         child: TextFormField(
+                          controller: statecontroller,
+                          onChanged: (Value) {
+                            controller.State = Value;
+                          },
                           decoration: const InputDecoration(
                             hintText: "Lagos State",
                             hintStyle: TextStyle(color: Colors.black),
@@ -127,6 +156,10 @@ class Checkform extends GetWidget<CartViewModel> {
                       Container(
                         width: 100,
                         child: TextFormField(
+                          controller: countrycontroller,
+                          onChanged: (Value) {
+                            controller.Country = Value;
+                          },
                           decoration: const InputDecoration(
                             hintText: "Nigeria",
                             hintStyle: TextStyle(color: Colors.black),

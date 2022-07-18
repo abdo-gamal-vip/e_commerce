@@ -7,7 +7,12 @@ import 'package:e_commerce/view_models/cart_view_model.dart';
 class CartViewModel extends GetxController {
   List<CartProduct> cartList = [];
   PageController pageController = PageController();
-
+  String Street1 = '';
+  String Street2 = '';
+  String City = '';
+  String State = '';
+  String Zip = '';
+  String Country = '';
   late DBHelper dbHelper;
   int total = 0;
 

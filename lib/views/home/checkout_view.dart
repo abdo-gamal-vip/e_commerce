@@ -1,6 +1,7 @@
 import 'package:e_commerce/view_models/cart_view_model.dart';
 import 'package:e_commerce/views/home/account_view.dart';
 import 'package:e_commerce/views/home/checkout_form.dart';
+import 'package:e_commerce/views/home/summart_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -16,7 +17,7 @@ class checkout extends GetWidget<CartViewModel> {
         child: Scaffold(
       body: PageView(controller: controller.pageController, children: [
         Checkform(),
-        AccountView(),
+        SummaryView(),
       ]),
     ));
   }
