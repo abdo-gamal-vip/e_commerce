@@ -1,11 +1,14 @@
+import 'package:e_commerce/view_models/cart_view_model.dart';
 import 'package:e_commerce/widgets/small_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 
-class Checkform extends StatelessWidget {
+class Checkform extends GetWidget<CartViewModel> {
   Checkform({Key? key}) : super(key: key);
+  @override
+  final controller = Get.put(CartViewModel());
 
   @override
   Widget build(BuildContext context) {
@@ -144,7 +147,13 @@ class Checkform extends StatelessWidget {
                           ontap: () {
                             Get.back();
                           }),
-                      defSmallButton(txt: "Next", ontap: () {})
+                      defSmallButton(
+                          txt: "Next",
+                          ontap: () {
+                            controller.pageController.animateToPage(1,
+                                duration: Duration(milliseconds: 300),
+                                curve: Curves.linear);
+                          }),
                     ]),
               ],
             ),
