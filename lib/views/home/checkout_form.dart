@@ -8,21 +8,16 @@ import 'package:get/get.dart';
 class Checkform extends GetWidget<CartViewModel> {
   Checkform({Key? key}) {
     super.key;
-    controller.Street1 = street1controller.text;
-    controller.Street2 = street2controller.text;
-    controller.City = citycontroller.text;
-    controller.State = statecontroller.text;
-    controller.Zip = zipcontroller.text;
-    controller.Country = countrycontroller.text;
+    controller.Street1 = controller.street1controller.text;
+    controller.Street2 = controller.street2controller.text;
+    controller.City = controller.citycontroller.text;
+    controller.State = controller.statecontroller.text;
+    controller.Zip = controller.zipcontroller.text;
+    controller.Country = controller.countrycontroller.text;
   }
   @override
   final controller = Get.put(CartViewModel());
-  TextEditingController street1controller = TextEditingController();
-  TextEditingController street2controller = TextEditingController();
-  TextEditingController citycontroller = TextEditingController();
-  TextEditingController statecontroller = TextEditingController();
-  TextEditingController zipcontroller = TextEditingController();
-  TextEditingController countrycontroller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -70,7 +65,7 @@ class Checkform extends GetWidget<CartViewModel> {
                   style: TextStyle(color: Colors.grey),
                 ),
                 TextFormField(
-                  controller: street1controller,
+                  controller: controller.street1controller,
                   onChanged: (Value) {
                     controller.Street1 = Value;
                   },
@@ -89,7 +84,7 @@ class Checkform extends GetWidget<CartViewModel> {
                   style: TextStyle(color: Colors.grey),
                 ),
                 TextFormField(
-                  controller: street2controller,
+                  controller: controller.street2controller,
                   onChanged: (Value) {
                     controller.Street2 = Value;
                   },
@@ -108,7 +103,7 @@ class Checkform extends GetWidget<CartViewModel> {
                   style: TextStyle(color: Colors.grey),
                 ),
                 TextFormField(
-                  controller: citycontroller,
+                  controller: controller.citycontroller,
                   onChanged: (Value) {
                     controller.City = Value;
                   },
@@ -141,7 +136,7 @@ class Checkform extends GetWidget<CartViewModel> {
                       Container(
                         width: 100,
                         child: TextFormField(
-                          controller: statecontroller,
+                          controller: controller.statecontroller,
                           onChanged: (Value) {
                             controller.State = Value;
                           },
@@ -156,7 +151,7 @@ class Checkform extends GetWidget<CartViewModel> {
                       Container(
                         width: 100,
                         child: TextFormField(
-                          controller: countrycontroller,
+                          controller: controller.countrycontroller,
                           onChanged: (Value) {
                             controller.Country = Value;
                           },

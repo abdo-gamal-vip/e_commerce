@@ -6,6 +6,12 @@ import 'package:e_commerce/view_models/cart_view_model.dart';
 
 class CartViewModel extends GetxController {
   List<CartProduct> cartList = [];
+  TextEditingController street1controller = TextEditingController();
+  TextEditingController street2controller = TextEditingController();
+  TextEditingController citycontroller = TextEditingController();
+  TextEditingController statecontroller = TextEditingController();
+  TextEditingController zipcontroller = TextEditingController();
+  TextEditingController countrycontroller = TextEditingController();
   PageController pageController = PageController();
   String Street1 = '';
   String Street2 = '';

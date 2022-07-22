@@ -1,5 +1,7 @@
 import 'package:e_commerce/helper/conests.dart';
 import 'package:e_commerce/view_models/cart_view_model.dart';
+import 'package:e_commerce/views/home/checkout_form.dart';
+import 'package:e_commerce/widgets/small_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -105,9 +107,42 @@ class SummaryView extends GetWidget<CartViewModel> {
                               letterSpacing: 2,
                               color: Colors.black87),
                         ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                Get.to(Checkform());
+                              },
+                              child: Text(
+                                "Change",
+                                style: TextStyle(
+                                    color: primaryColor, fontSize: 14),
+                              ),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        defSmallButton(
+                            txt: "Back",
+                            ontap: () {
+                              controller.pageController.animateToPage(0,
+                                  duration: Duration(milliseconds: 300),
+                                  curve: Curves.linear);
+                            }),
+                        defSmallButton(
+                            txt: "order",
+                            ontap: () {
+                              controller.pageController.animateToPage(1,
+                                  duration: Duration(milliseconds: 300),
+                                  curve: Curves.linear);
+                            }),
+                      ]),
                 ],
               )
             ],

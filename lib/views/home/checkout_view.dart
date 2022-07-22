@@ -15,10 +15,13 @@ class checkout extends GetWidget<CartViewModel> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      body: PageView(controller: controller.pageController, children: [
-        Checkform(),
-        SummaryView(),
-      ]),
+      body: PageView(
+          physics: ScrollPhysics(parent: NeverScrollableScrollPhysics()),
+          controller: controller.pageController,
+          children: [
+            Checkform(),
+            SummaryView(),
+          ]),
     ));
   }
 }
