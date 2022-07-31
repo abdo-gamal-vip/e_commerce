@@ -46,8 +46,8 @@ class DBHelper {
         where: 'id=?', whereArgs: [cartProduct.id]);
   }
 
-  Future<int> clear() async {
+  void clear() async {
     Database db = await createDatabase();
-    return await db.delete('products');
+    db.execute('delete from products');
   }
 }

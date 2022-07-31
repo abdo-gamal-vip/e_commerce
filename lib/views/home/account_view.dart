@@ -1,6 +1,7 @@
 import 'package:e_commerce/helper/conests.dart';
 import 'package:e_commerce/view_models/account_view_model.dart';
 import 'package:e_commerce/views/home/home_vIew.dart';
+import 'package:e_commerce/views/home/track_order_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -80,7 +81,7 @@ class AccountView extends GetWidget<AccountViweModel> {
                 ),
                 ListTile(
                   onTap: () {
-                    Get.to(HomeView());
+                    Get.to(TrackOrderView());
                   },
                   leading: Image.asset("assets/svg/editprofile.png"),
                   title: Text("Tracking Order"),

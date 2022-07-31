@@ -94,10 +94,14 @@ class CartViewModel extends GetxController {
       'adderss': '$Country,$State,$City,$Street1,$Street2',
       'uid': FirebaseAuth.instance.currentUser!.uid,
       'order': cartList.map((e) => e.toMap()).toList(),
+      'isDelivired': false,
     }).then((value) {
       Get.back();
       Get.snackbar("congratulatios", "Order Sent");
       dbHelper.clear();
+      cartList.clear();
+
+      update();
     });
   }
 }
