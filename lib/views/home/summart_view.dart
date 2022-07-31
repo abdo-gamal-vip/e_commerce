@@ -138,9 +138,7 @@ class SummaryView extends GetWidget<CartViewModel> {
                         defSmallButton(
                             txt: "order",
                             ontap: () {
-                              controller.pageController.animateToPage(1,
-                                  duration: Duration(milliseconds: 300),
-                                  curve: Curves.linear);
+                              controller.sendorder();
                             }),
                       ]),
                 ],

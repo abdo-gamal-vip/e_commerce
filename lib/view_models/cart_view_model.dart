@@ -1,8 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce/helper/db_helper.dart';
 import 'package:e_commerce/models/cart_product.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:e_commerce/view_models/cart_view_model.dart';
+import 'package:sqflite/sqflite.dart';
 
 class CartViewModel extends GetxController {
   List<CartProduct> cartList = [];
@@ -19,6 +22,8 @@ class CartViewModel extends GetxController {
   String State = '';
   String Zip = '';
   String Country = '';
+  CollectionReference ordersRef =
+      FirebaseFirestore.instance.collection('orders');
   late DBHelper dbHelper;
   int total = 0;
 
@@ -82,5 +87,17 @@ class CartViewModel extends GetxController {
         update();
       });
     }
+  }
+
+  Future<void> sendorder() async {
+    ordersRef.doc().set({
+      'adderss': '$Country,$State,$City,$Street1,$Street2',
+      'uid': FirebaseAuth.instance.currentUser!.uid,
+      'order': cartList.map((e) => e.toMap()).toList(),
+    }).then((value) {
+      Get.back();
+      Get.snackbar("congratulatios", "Order Sent");
+      dbHelper.clear();
+    });
   }
 }
