@@ -40,25 +40,42 @@ class TrackOrderView extends GetWidget<AccountViweModel> {
                 child: SizedBox(
                   width: 375 * 343 / Get.width,
                   height: 812 * 140 / Get.height,
-                  child: Column(
-                    children: [
-                      ListTile(
-                        title: Text(controller.ordersList[index].adderss),
-                      ),
-                      controller.ordersList[index].isDelivired
-                          ? Container(
-                              height: 30,
-                              width: 80,
-                              color: primaryColor,
-                              child: Center(child: Text("Deleverd")),
-                            )
-                          : Container(
-                              height: 30,
-                              width: 80,
-                              color: Colors.yellow,
-                              child: Center(child: Text("On Transit")),
-                            ),
-                    ],
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(controller.ordersList[index].adderss),
+                        Container(
+                          height: 70,
+                          width: double.infinity,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Image.network(
+                                fit: BoxFit.fill,
+                                controller.ordersList[index].img,
+                                height: 250,
+                                width: 100,
+                              ),
+                            ],
+                          ),
+                        ),
+                        controller.ordersList[index].isDelivired
+                            ? Container(
+                                height: 30,
+                                width: 80,
+                                color: primaryColor,
+                                child: Center(child: Text("Deleverd")),
+                              )
+                            : Container(
+                                height: 30,
+                                width: 80,
+                                color: Colors.yellow,
+                                child: Center(child: Text("In Transit")),
+                              ),
+                      ],
+                    ),
                   ),
                 ),
               );
