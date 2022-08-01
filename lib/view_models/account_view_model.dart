@@ -26,6 +26,7 @@ class AccountViweModel extends GetxController {
   }
 
   Future<void> getOrders() async {
+    ordersList.clear();
     await ordersRef
         .where('uid', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
         .get()
