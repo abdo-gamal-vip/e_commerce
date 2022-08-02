@@ -1,6 +1,7 @@
 import 'package:e_commerce/helper/conests.dart';
 import 'package:e_commerce/view_models/account_view_model.dart';
 import 'package:e_commerce/views/auth_view/sign_in_view.dart';
+import 'package:e_commerce/views/home/change_pass.dart';
 import 'package:e_commerce/views/home/home_vIew.dart';
 import 'package:e_commerce/views/home/track_order_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -43,7 +44,7 @@ class AccountView extends GetWidget<AccountViweModel> {
                     ),
                     Container(
                       width: 812 * 200 / Get.height,
-                      height: 812 * 50 / Get.height,
+                      height: 812 * 100 / Get.height,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -58,6 +59,15 @@ class AccountView extends GetWidget<AccountViweModel> {
                           Text(controller.email.toString() == null
                               ? 'loading email'
                               : controller.email.toString()),
+                          InkWell(
+                              onTap: () {
+                                Get.to(ChangePass());
+                              },
+                              child: Text(
+                                "change password",
+                                style:
+                                    TextStyle(fontSize: 18, color: Colors.red),
+                              )),
                         ],
                       ),
                     ),
@@ -67,64 +77,67 @@ class AccountView extends GetWidget<AccountViweModel> {
               SizedBox(
                 height: 10,
               ),
-              Column(children: [
-                ListTile(
-                  onTap: () {
-                    Get.to(HomeView());
-                  },
-                  leading: Image.asset("assets/svg/editprofile.png"),
-                  title: Text("Edit Profile"),
-                  trailing: RotatedBox(
-                    quarterTurns: 2,
-                    child: Icon(
-                      Icons.arrow_back_ios_new_outlined,
+              Container(
+                width: double.infinity,
+                child: Column(children: [
+                  ListTile(
+                    onTap: () {
+                      Get.to(HomeView());
+                    },
+                    leading: Image.asset("assets/svg/editprofile.png"),
+                    title: Text("Edit Profile"),
+                    trailing: RotatedBox(
+                      quarterTurns: 2,
+                      child: Icon(
+                        Icons.arrow_back_ios_new_outlined,
+                      ),
                     ),
                   ),
-                ),
-                ListTile(
-                  onTap: () {
-                    Get.to(TrackOrderView());
-                  },
-                  leading: Image.asset("assets/svg/editprofile.png"),
-                  title: Text("Tracking Order"),
-                  trailing: RotatedBox(
-                    quarterTurns: 2,
-                    child: Icon(
-                      Icons.arrow_back_ios_new_outlined,
+                  ListTile(
+                    onTap: () {
+                      Get.to(TrackOrderView());
+                    },
+                    leading: Image.asset("assets/svg/editprofile.png"),
+                    title: Text("Tracking Order"),
+                    trailing: RotatedBox(
+                      quarterTurns: 2,
+                      child: Icon(
+                        Icons.arrow_back_ios_new_outlined,
+                      ),
                     ),
                   ),
-                ),
-                ListTile(
-                  onTap: () {
-                    Get.to(HomeView());
-                  },
-                  leading: Image.asset("assets/svg/editprofile.png"),
-                  title: Text("Notifications"),
-                  trailing: RotatedBox(
-                    quarterTurns: 2,
-                    child: Icon(
-                      Icons.arrow_back_ios_new_outlined,
+                  ListTile(
+                    onTap: () {
+                      Get.to(HomeView());
+                    },
+                    leading: Image.asset("assets/svg/editprofile.png"),
+                    title: Text("Notifications"),
+                    trailing: RotatedBox(
+                      quarterTurns: 2,
+                      child: Icon(
+                        Icons.arrow_back_ios_new_outlined,
+                      ),
                     ),
                   ),
-                ),
-                ListTile(
-                  onTap: () async {
-                    await FirebaseAuth.instance.signOut();
-                    Get.offAll(SignInView());
-                  },
-                  leading: Icon(
-                    Icons.logout,
-                    color: primaryColor,
-                  ),
-                  title: Text("Sign out"),
-                  trailing: RotatedBox(
-                    quarterTurns: 2,
-                    child: Icon(
-                      Icons.arrow_back_ios_new_outlined,
+                  ListTile(
+                    onTap: () async {
+                      await FirebaseAuth.instance.signOut();
+                      Get.offAll(SignInView());
+                    },
+                    leading: Icon(
+                      Icons.logout,
+                      color: primaryColor,
+                    ),
+                    title: Text("Sign out"),
+                    trailing: RotatedBox(
+                      quarterTurns: 2,
+                      child: Icon(
+                        Icons.arrow_back_ios_new_outlined,
+                      ),
                     ),
                   ),
-                ),
-              ]),
+                ]),
+              ),
             ],
           ),
         ),
