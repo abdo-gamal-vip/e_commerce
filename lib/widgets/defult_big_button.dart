@@ -55,8 +55,8 @@ class DefultBigButton2 extends StatelessWidget {
               onPressed: () {
                 ontap();
               },
-              child: const Text(
-                "Sign UP",
+              child: Text(
+                "$txt",
                 style: TextStyle(
                     fontSize: 15,
                     color: Colors.white,

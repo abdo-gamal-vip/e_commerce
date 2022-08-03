@@ -39,6 +39,7 @@ class AccountViweModel extends GetxController {
         print(value.docs);
       }
       update();
+      
     });
   }
 

@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:e_commerce/views/auth_view/sign_in_view.dart';
 import 'package:e_commerce/views/home/home_vIew.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
@@ -9,6 +10,12 @@ class AuthViewModel extends GetxController {
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   CollectionReference userref = FirebaseFirestore.instance.collection('users');
   CollectionReference userrref = FirebaseFirestore.instance.collection('body');
+
+  Future<void> changepss(String password) async {
+    await firebaseAuth.currentUser!.updatePassword(password);
+    FirebaseAuth.instance.signOut();
+    Get.offAll(SignInView());
+  }
 
   Future<void> signUp(String email, String password, String name) async {
     try {

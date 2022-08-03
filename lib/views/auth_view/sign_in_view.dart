@@ -1,5 +1,6 @@
 import 'package:e_commerce/helper/conests.dart';
 import 'package:e_commerce/view_models/auth_view_model.dart';
+import 'package:e_commerce/views/auth_view/reset_pass.dart';
 import 'package:e_commerce/views/auth_view/sign_up_view.dart';
 import 'package:e_commerce/widgets/defult_big_button.dart';
 import 'package:flutter/material.dart';
@@ -111,8 +112,12 @@ class SignInView extends GetWidget<AuthViewModel> {
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
-                          children: const [
-                            InkWell(child: Text("forget password ?"))
+                          children: [
+                            InkWell(
+                                onTap: () {
+                                  Get.to(ResetPass());
+                                },
+                                child: Text("forget password ?")),
                           ],
                         ),
                         SizedBox(

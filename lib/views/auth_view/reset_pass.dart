@@ -1,6 +1,8 @@
 import 'package:e_commerce/helper/conests.dart';
 import 'package:e_commerce/view_models/auth_view_model.dart';
 import 'package:e_commerce/widgets/defult_big_button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -9,11 +11,11 @@ import 'package:flutter_signin_button/button_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-class ChangePass extends GetWidget<AuthViewModel> {
-  ChangePass({Key? key}) : super(key: key);
+class ResetPass extends GetWidget<AuthViewModel> {
+  ResetPass({Key? key}) : super(key: key);
   GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   final controller = Get.put(AuthViewModel());
-  TextEditingController namePasscon = TextEditingController();
+  TextEditingController ResetPasscon = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +66,7 @@ class ChangePass extends GetWidget<AuthViewModel> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: const [
                               Text(
-                                "Change password, ",
+                                "Reset Password, ",
                                 style: TextStyle(fontSize: 30),
                               ),
                             ],
@@ -75,21 +77,21 @@ class ChangePass extends GetWidget<AuthViewModel> {
                           SizedBox(
                             height: Get.height * 20 / Get.height,
                           ),
-                          Text("New Password",
+                          Text("Email Address",
                               style: TextStyle(
                                   fontSize: 16, color: Color(0xff929292))),
                           TextFormField(
-                            controller: namePasscon,
+                            controller: ResetPasscon,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
-                                return "Please enter your password";
+                                return "Please enter your email";
                               }
                               return null;
                             },
                             decoration: InputDecoration(
-                                hintText: ".........",
+                                hintText: "enter your email address",
                                 hintStyle: TextStyle(
-                                    fontSize: 25, fontWeight: FontWeight.bold)),
+                                    fontSize: 14, fontWeight: FontWeight.bold)),
                           ),
                           SizedBox(
                             height: Get.height * 20 / Get.height,
@@ -98,12 +100,13 @@ class ChangePass extends GetWidget<AuthViewModel> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               DefultBigButton2(
-                                  txt: "Change Password",
+                                  txt: "Reset Password",
                                   ontap: () async {
                                     if (_formkey.currentState!.validate()) {
                                       try {
-                                        final password = await namePasscon.text;
-                                        await controller.changepss(password);
+                                        FirebaseAuth.instance
+                                            .sendPasswordResetEmail(
+                                                email: ResetPasscon.text);
                                       } catch (e) {
                                         Get.snackbar(e.toString(), "error");
 
